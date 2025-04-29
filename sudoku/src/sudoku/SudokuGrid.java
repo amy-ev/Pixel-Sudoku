@@ -36,15 +36,22 @@ public class SudokuGrid extends JPanel {
         }
     }
 
-    public boolean isFinished(){
+    public void isFinished(){
         for (int row = 0; row < GridConstants.GRID_SIZE; row++) {
             for (int col = 0; col < GridConstants.GRID_SIZE; col++) {
                 if (cells[row][col].state == CellState.EMPTY || cells[row][col].state == CellState.INCORRECT) {
-                    return false;
+                    return;
                 }
             }
         }
-        return true;
+        JOptionPane.showMessageDialog(null, "wooo you win");
+        int choice = JOptionPane.showConfirmDialog(null, "would you like to play again?", "New Game",JOptionPane.YES_NO_OPTION);
+        if (choice == JOptionPane.YES_OPTION) {
+            newGrid(Difficulty.EASY);
+        }else if (choice == JOptionPane.NO_OPTION) {
+            Window window = SwingUtilities.windowForComponent(this);
+            window.dispose();
+        }
     }
 
     private class CellInputListener implements ActionListener{

@@ -40,7 +40,7 @@ public class Sudoku {
             System.arraycopy(sudokuBoard[i], 0, finishedBoard[i], 0, GridConstants.GRID_SIZE);
         }
         removeDigits();
-        //printSudoku();
+        printSudoku();
     }
 
 
@@ -125,7 +125,7 @@ public class Sudoku {
     public void printSudoku(){
         for (int row = 0; row < GridConstants.GRID_SIZE; row++) {
             for (int col = 0; col < GridConstants.GRID_SIZE; col++) {
-                System.out.print(sudokuBoard[row][col] + " ");
+                System.out.print(finishedBoard[row][col] + " ");
             }
             System.out.println();
         }

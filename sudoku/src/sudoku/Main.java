@@ -21,8 +21,13 @@ public class Main extends JFrame {
 
         SudokuGrid grid = new SudokuGrid();
         grid.newGrid((Difficulty) difficulty.getSelectedItem());
+        finishedButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                grid.isFinished();
+            }
+        });
 
-        finishedButton.addActionListener(e -> grid.newGrid((Difficulty) difficulty.getSelectedItem()));
+        //finishedButton.addActionListener(e -> grid.newGrid((Difficulty) difficulty.getSelectedItem()));
         super.add(difficulty,BorderLayout.NORTH);
         super.add(grid, BorderLayout.CENTER);
         super.add(finishedButton, BorderLayout.SOUTH);
