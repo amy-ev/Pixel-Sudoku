@@ -33,9 +33,9 @@ public class Cell extends JTextField {
         super.setFont(FONT);
     }
 
-    public void newGame(int answer, boolean isFilled){
+    public void newGrid(int answer, boolean isFilled){
         this.answer = answer;
-        // true if filled, false if empty
+        // if isFilled = true, then CellState is .FILLED, otherwise .EMPTY
         state = isFilled ? CellState.FILLED : CellState.EMPTY;
         paint();
     }

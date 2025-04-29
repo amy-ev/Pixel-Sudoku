@@ -5,8 +5,10 @@ import java.awt.*;
 
 public class SudokuGrid extends JPanel {
     private Cell[][] cells = new Cell[GridConstants.GRID_SIZE][GridConstants.GRID_SIZE];
+    private Sudoku sudoku = new Sudoku();
 
     public SudokuGrid() {
+        sudoku.newSudoku(Difficulty.EASY);
         super.setLayout(new GridLayout(GridConstants.GRID_SIZE, GridConstants.GRID_SIZE));
 
         for (int row = 0; row < GridConstants.GRID_SIZE; row++) {
@@ -16,5 +18,14 @@ public class SudokuGrid extends JPanel {
             }
         }
         super.setPreferredSize(new Dimension(GridConstants.GRID_WIDTH, GridConstants.GRID_HEIGHT));
+    }
+
+    public void newGrid(){
+        for (int row = 0; row < GridConstants.GRID_SIZE; row++) {
+            for (int col = 0; col < GridConstants.GRID_SIZE; col++) {
+                cells[row][col].newGrid(sudoku.sudokuBoard[row][col],sudoku.isFilled[row][col]);
+
+            }
+        }
     }
 }

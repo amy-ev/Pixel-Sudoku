@@ -85,6 +85,7 @@ public class Sudoku {
             if (sudokuBoard[row][col] != 0){
                 count--;
                 sudokuBoard[row][col] = 0;
+
                 isFilled[row][col] = false;
             }
         }

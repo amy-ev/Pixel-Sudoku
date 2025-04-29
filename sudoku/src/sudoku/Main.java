@@ -9,6 +9,7 @@ public class Main extends JFrame {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         SudokuGrid grid = new SudokuGrid();
+        grid.newGrid();
         frame.add(grid);
         frame.pack();
         frame.setVisible(true);
