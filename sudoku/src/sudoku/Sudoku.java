@@ -21,7 +21,7 @@ public class Sudoku {
     public void newSudoku(Difficulty difficulty) {
 
         if (difficulty == Difficulty.EASY) {
-            missing = 10;
+            missing = 1;
         }else if (difficulty == Difficulty.MEDIUM) {
             missing = 30;
         }else if (difficulty == Difficulty.HARD) {

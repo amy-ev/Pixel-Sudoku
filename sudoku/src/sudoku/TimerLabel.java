@@ -34,4 +34,9 @@ public class TimerLabel extends JLabel {
     public Timer getTimer() {
         return timer;
     }
+
+    public String stopTimer(){
+        timer.stop();
+        return super.getText();
+    }
 }

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class End extends JFrame {
 
@@ -12,6 +13,9 @@ public class End extends JFrame {
         JPanel panel = new JPanel();
         JLabel label = new JLabel("would you like to play again?");
 
+        TimerLabel mainTimerLabel = Main.timerLabel;
+        JLabel timerLabel = new JLabel(mainTimerLabel.stopTimer());
+        mainTimerLabel.setText("00:00");
         JButton yesButton = new JButton("Yes");
 
         yesButton.addActionListener(new ActionListener() {
@@ -20,6 +24,7 @@ public class End extends JFrame {
                 Main main = new Main();
             }
         });
+
         JButton noButton = new JButton("No");
         noButton.addActionListener(e -> System.exit(0));
 
@@ -27,6 +32,7 @@ public class End extends JFrame {
         panel.add(label);
         panel.add(yesButton);
         panel.add(noButton);
+        panel.add(timerLabel);
 
 
         super.add(panel);

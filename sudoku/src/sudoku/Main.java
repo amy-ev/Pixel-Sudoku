@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Main extends JFrame {
-
+    public static TimerLabel timerLabel;
     public Main() {
 
         super.getContentPane().setLayout(new BorderLayout());
@@ -22,7 +22,7 @@ public class Main extends JFrame {
         buttonPanel.add(restartButton);
         buttonPanel.add(finishedButton);
 
-        TimerLabel timerLabel = new TimerLabel();
+        timerLabel = new TimerLabel();
 
         JPanel menuPanel = new JPanel(new GridLayout(1, 2));
         menuPanel.add(timerLabel);
