@@ -6,8 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SudokuGrid extends JPanel {
-    private Cell[][] cells = new Cell[GridConstants.GRID_SIZE][GridConstants.GRID_SIZE];
-    private Sudoku sudoku = new Sudoku();
+    private final Cell[][] cells = new Cell[GridConstants.GRID_SIZE][GridConstants.GRID_SIZE];
+    private final Sudoku sudoku = new Sudoku();
 
     public SudokuGrid() {
         super.setLayout(new GridLayout(GridConstants.GRID_SIZE, GridConstants.GRID_SIZE));
@@ -44,14 +44,7 @@ public class SudokuGrid extends JPanel {
                 }
             }
         }
-        JOptionPane.showMessageDialog(null, "wooo you win");
-        int choice = JOptionPane.showConfirmDialog(null, "would you like to play again?", "New Game",JOptionPane.YES_NO_OPTION);
-        if (choice == JOptionPane.YES_OPTION) {
-            newGrid(Difficulty.EASY);
-        }else if (choice == JOptionPane.NO_OPTION) {
-            Window window = SwingUtilities.windowForComponent(this);
-            window.dispose();
-        }
+        End end = new End();
     }
 
     private class CellInputListener implements ActionListener{

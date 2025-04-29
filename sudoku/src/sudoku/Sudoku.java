@@ -21,11 +21,11 @@ public class Sudoku {
     public void newSudoku(Difficulty difficulty) {
 
         if (difficulty == Difficulty.EASY) {
-            missing = 15;
+            missing = 10;
         }else if (difficulty == Difficulty.MEDIUM) {
-            missing = 25;
+            missing = 30;
         }else if (difficulty == Difficulty.HARD) {
-            missing = 40;
+            missing = 60;
         }
 
         for (int i = 0; i < GridConstants.GRID_SIZE; i++) {
