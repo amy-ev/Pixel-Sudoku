@@ -11,16 +11,47 @@ public class Main extends JFrame {
 
         super.getContentPane().setLayout(new BorderLayout());
 
-        JButton finishedButton =  new JButton("Finished");
+        JButton startButton =  new JButton("Start");
+        JButton finishedButton =  new JButton("Finish");
+        JButton restartButton =  new JButton("Restart");
+
+
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.TRAILING));
+        buttonPanel.add(restartButton);
+        buttonPanel.add(finishedButton);
+
+        TimerLabel timerLabel = new TimerLabel();
+
+
+        JPanel menuPanel = new JPanel(new GridLayout(1, 2));
+        menuPanel.add(timerLabel);
+        menuPanel.add(buttonPanel);
 
 
         JComboBox<Difficulty> difficulty = new JComboBox<>(Difficulty.values());
         difficulty.setSelectedIndex(0);
+
+        SudokuGrid grid = new SudokuGrid();
+
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                Main.super.add(grid,BorderLayout.CENTER);
+                grid.newGrid((Difficulty) difficulty.getSelectedItem());
+
+                Main.super.remove(startButton);
+                Main.super.add(menuPanel,BorderLayout.SOUTH);
+                Main.super.repaint();
+                Main.super.pack();
+            }
+        });
+
+        restartButton.addActionListener(e -> grid.newGrid((Difficulty) difficulty.getSelectedItem()));
+
         // difficulty.getSelectedItem = NAME
         // difficulty.getSelectedIndex = 0,1,2 ... but enum starts at 1
 
-        SudokuGrid grid = new SudokuGrid();
-        grid.newGrid((Difficulty) difficulty.getSelectedItem());
         finishedButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 grid.isFinished();
@@ -29,8 +60,8 @@ public class Main extends JFrame {
 
         //finishedButton.addActionListener(e -> grid.newGrid((Difficulty) difficulty.getSelectedItem()));
         super.add(difficulty,BorderLayout.NORTH);
-        super.add(grid, BorderLayout.CENTER);
-        super.add(finishedButton, BorderLayout.SOUTH);
+        super.add(startButton,BorderLayout.SOUTH);
+        //super.add(finishedButton, BorderLayout.SOUTH);
 
         super.pack();
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
