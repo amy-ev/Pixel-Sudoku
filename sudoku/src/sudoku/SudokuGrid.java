@@ -36,6 +36,17 @@ public class SudokuGrid extends JPanel {
         }
     }
 
+    public boolean isFinished(){
+        for (int row = 0; row < GridConstants.GRID_SIZE; row++) {
+            for (int col = 0; col < GridConstants.GRID_SIZE; col++) {
+                if (cells[row][col].state == CellState.EMPTY || cells[row][col].state == CellState.INCORRECT) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     private class CellInputListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -50,6 +61,7 @@ public class SudokuGrid extends JPanel {
                     eCell.state = CellState.INCORRECT;
                 }
                 eCell.paint();
+
             }catch (NumberFormatException nfe){
                 JOptionPane.showMessageDialog(null, "Please enter a valid number");
             }

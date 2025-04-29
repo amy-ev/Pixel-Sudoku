@@ -1,5 +1,9 @@
 package sudoku;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Sudoku {
     int[][] sudokuBoard = new int[GridConstants.GRID_SIZE][GridConstants.GRID_SIZE];
     int[][] finishedBoard = new int[GridConstants.GRID_SIZE][GridConstants.GRID_SIZE];
@@ -7,7 +11,6 @@ public class Sudoku {
 
     int squareRootGrid;
     int missing;
-
 
     public Sudoku() {
         super();
@@ -17,7 +20,6 @@ public class Sudoku {
 
     public void newSudoku(Difficulty difficulty) {
 
-        System.out.println(difficulty);
         if (difficulty == Difficulty.EASY) {
             missing = 15;
         }else if (difficulty == Difficulty.MEDIUM) {
@@ -38,35 +40,26 @@ public class Sudoku {
             System.arraycopy(sudokuBoard[i], 0, finishedBoard[i], 0, GridConstants.GRID_SIZE);
         }
         removeDigits();
-        printSudoku();
+        //printSudoku();
     }
 
 
-    public boolean fillValues(){
-        int number;
+    public boolean fillValues() {
         for (int row = 0; row < GridConstants.GRID_SIZE; row++) {
             for (int col = 0; col < GridConstants.GRID_SIZE; col++) {
-                number = randomGenerator(GridConstants.GRID_SIZE);
-                if (isValidPlacement(sudokuBoard,number, row, col)){
-                    sudokuBoard[row][col] = number;
-                    if (fillValues()){
-                        return true;
-                    }
-                    else {
-                        sudokuBoard[row][col] = 0;
-                    }
-                }
-                if (sudokuBoard[row][col] == 0){
-                    for (int numberToTry = 1; numberToTry <= GridConstants.GRID_SIZE; numberToTry++) {
-                       if (isValidPlacement(sudokuBoard,numberToTry,row,col)){
-                           sudokuBoard[row][col] = numberToTry;
+                if (sudokuBoard[row][col] == 0) {
 
-                           if (fillValues()){
-                               return true;
-                           }else {
-                               sudokuBoard[row][col] = 0;
-                           }
-                       }
+                    List<Integer> numbers = getShuffled();
+
+                    for (int number : numbers) {
+                        if (isValidPlacement(sudokuBoard, number, row, col)) {
+                            sudokuBoard[row][col] = number;
+
+                            if (fillValues()) {
+                                return true;
+                            }
+                            sudokuBoard[row][col] = 0;
+                        }
                     }
                     return false;
                 }
@@ -75,11 +68,11 @@ public class Sudoku {
         return true;
     }
 
-
     public void removeDigits(){
         int count = missing;
         while (count != 0) {
-            int cellID = randomGenerator(GridConstants.GRID_SIZE*GridConstants.GRID_SIZE)-1;
+
+            int cellID = randomGenerator();
             int row = cellID / GridConstants.GRID_SIZE;
             int col = cellID % GridConstants.GRID_SIZE;
             if (sudokuBoard[row][col] != 0){
@@ -139,8 +132,17 @@ public class Sudoku {
         System.out.println();
     }
 
-    int randomGenerator(int size){
-        return (int)Math.floor((Math.random() * size+1));
+    int randomGenerator(){
+        return (int)Math.floor((Math.random() * GridConstants.BOARD_SIZE));
+    }
+
+    List<Integer> getShuffled(){
+        List<Integer> numbers = new ArrayList<>();
+        for (int i = 1; i <= GridConstants.GRID_SIZE; i++){
+            numbers.add(i);
+        }
+        Collections.shuffle(numbers);
+        return numbers;
     }
 
 }

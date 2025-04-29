@@ -2,6 +2,8 @@ package sudoku;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Main extends JFrame {
 
@@ -11,6 +13,7 @@ public class Main extends JFrame {
 
         JButton finishedButton =  new JButton("Finished");
 
+
         JComboBox<Difficulty> difficulty = new JComboBox<>(Difficulty.values());
         difficulty.setSelectedIndex(0);
         // difficulty.getSelectedItem = NAME
@@ -19,7 +22,7 @@ public class Main extends JFrame {
         SudokuGrid grid = new SudokuGrid();
         grid.newGrid((Difficulty) difficulty.getSelectedItem());
 
-
+        finishedButton.addActionListener(e -> grid.newGrid((Difficulty) difficulty.getSelectedItem()));
         super.add(difficulty,BorderLayout.NORTH);
         super.add(grid, BorderLayout.CENTER);
         super.add(finishedButton, BorderLayout.SOUTH);

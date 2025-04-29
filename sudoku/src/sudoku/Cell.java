@@ -17,6 +17,7 @@ public class Cell extends JTextField {
     public static final Color FG_EMPTY = Color.GRAY;
 
     // to use when the correct/incorrect value has been inputted
+    // may remove in favour for end of game check
     public static final Color BG_CORRECT = Color.GREEN;
     public static final Color BG_INCORRECT = Color.RED;
 
