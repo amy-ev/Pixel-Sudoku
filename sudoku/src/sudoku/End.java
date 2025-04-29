@@ -13,11 +13,13 @@ public class End extends JFrame {
         JPanel panel = new JPanel();
         JLabel label = new JLabel("would you like to play again?");
 
+
         TimerLabel mainTimerLabel = Main.timerLabel;
         JLabel timerLabel = new JLabel(mainTimerLabel.stopTimer());
         mainTimerLabel.setText("00:00");
-        JButton yesButton = new JButton("Yes");
 
+
+        JButton yesButton = new JButton("Yes");
         yesButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 removeFrames();
@@ -28,12 +30,10 @@ public class End extends JFrame {
         JButton noButton = new JButton("No");
         noButton.addActionListener(e -> System.exit(0));
 
-
         panel.add(label);
         panel.add(yesButton);
         panel.add(noButton);
         panel.add(timerLabel);
-
 
         super.add(panel);
         super.setVisible(true);

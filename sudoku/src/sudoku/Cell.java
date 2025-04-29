@@ -13,13 +13,14 @@ public class Cell extends JTextField {
     public static final Color FG_FILLED = Color.BLACK;
 
     // empty cells
-    public static final Color BG_EMPTY = Color.LIGHT_GRAY;
+    public static final Color BG_EMPTY = Color.WHITE;
     public static final Color FG_EMPTY = Color.GRAY;
 
     // to use when the correct/incorrect value has been inputted
     // may remove in favour for end of game check
-    public static final Color BG_CORRECT = Color.GREEN;
-    public static final Color BG_INCORRECT = Color.RED;
+    public static final Color FG_CORRECT = new Color(0,153,0);   //new Color(144,223,144);
+    //public static final Color FG_CORRECT = Color.BLACK;
+    public static final Color FG_INCORRECT = Color.RED;
 
     // to be changed
     public static final Font FONT = new Font("SansSerif", Font.PLAIN, 12);
@@ -55,10 +56,11 @@ public class Cell extends JTextField {
             setForeground(FG_FILLED);
 
         } else if (state == CellState.CORRECT) {
-            setBackground(BG_CORRECT);
+            //setBackground(BG_CORRECT);
+            setForeground(FG_CORRECT);
 
         } else if (state == CellState.INCORRECT) {
-            setBackground(BG_INCORRECT);
+            setForeground(FG_INCORRECT);
         }
     }
 }
