@@ -2,6 +2,7 @@ package sudoku;
 
 import javax.swing.*;
 import java.awt.*;
+import java.net.URL;
 
 public class Cell extends JTextField {
     int row,col;
@@ -23,8 +24,8 @@ public class Cell extends JTextField {
     public static final Color FG_INCORRECT = Color.RED;
 
     // to be changed
-    public static final Font FONT = new Font("SansSerif", Font.PLAIN, 12);
-
+    static PixelFont pixelFont = new PixelFont();
+    public static final Font FONT = pixelFont.getFont();
     // constructor
     public Cell(int row, int col){
         super();
@@ -58,6 +59,7 @@ public class Cell extends JTextField {
         } else if (state == CellState.CORRECT) {
             //setBackground(BG_CORRECT);
             setForeground(FG_CORRECT);
+            super.setEditable(false);
 
         } else if (state == CellState.INCORRECT) {
             setForeground(FG_INCORRECT);
