@@ -1,5 +1,7 @@
 package sudoku;
 
+import jdk.jfr.Description;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,11 +24,9 @@ public class Main extends JFrame {
 
         TimerLabel timerLabel = new TimerLabel();
 
-
         JPanel menuPanel = new JPanel(new GridLayout(1, 2));
         menuPanel.add(timerLabel);
         menuPanel.add(buttonPanel);
-
 
         JComboBox<Difficulty> difficulty = new JComboBox<>(Difficulty.values());
         difficulty.setSelectedIndex(0);
@@ -47,7 +47,14 @@ public class Main extends JFrame {
             }
         });
 
-        restartButton.addActionListener(e -> grid.newGrid((Difficulty) difficulty.getSelectedItem()));
+        restartButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                grid.newGrid((Difficulty) difficulty.getSelectedItem());
+                timerLabel.resetCountSecs();
+                timerLabel.repaint();
+            }
+        });
 
         // difficulty.getSelectedItem = NAME
         // difficulty.getSelectedIndex = 0,1,2 ... but enum starts at 1
