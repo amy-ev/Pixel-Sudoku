@@ -1,6 +1,4 @@
-package sudoku;
-
-import jdk.jfr.Description;
+package main.sudoku;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,14 +7,15 @@ import java.awt.event.ActionListener;
 
 public class Main extends JFrame {
     public static TimerLabel timerLabel;
+    private static final PixelFont pixelFont = new PixelFont();
+
+    public static final Font FONT = pixelFont.getFont();
     public Main() {
 
         super.getContentPane().setLayout(new BorderLayout());
-
         JButton startButton =  new JButton("Start");
         JButton finishedButton =  new JButton("Finish");
         JButton restartButton =  new JButton("Restart");
-
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.TRAILING));
         buttonPanel.add(restartButton);
@@ -42,6 +41,8 @@ public class Main extends JFrame {
 
                 Main.super.remove(startButton);
                 Main.super.add(menuPanel,BorderLayout.SOUTH);
+
+                PixelFont.setPixelFont(Main.this,pixelFont.getFont());
                 Main.super.repaint();
                 Main.super.pack();
             }
@@ -70,6 +71,7 @@ public class Main extends JFrame {
         super.add(startButton,BorderLayout.SOUTH);
         //super.add(finishedButton, BorderLayout.SOUTH);
 
+        PixelFont.setPixelFont(this, pixelFont.getFont());
         super.pack();
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         super.setVisible(true);

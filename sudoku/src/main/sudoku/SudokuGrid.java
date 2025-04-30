@@ -1,4 +1,4 @@
-package sudoku;
+package main.sudoku;
 
 import javax.swing.*;
 import java.awt.*;

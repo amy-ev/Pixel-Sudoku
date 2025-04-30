@@ -1,8 +1,7 @@
-package sudoku;
+package main.sudoku;
 
 import javax.swing.*;
 import java.awt.*;
-import java.net.URL;
 
 public class Cell extends JTextField {
     int row,col;
@@ -24,8 +23,6 @@ public class Cell extends JTextField {
     public static final Color FG_INCORRECT = Color.RED;
 
     // to be changed
-    static PixelFont pixelFont = new PixelFont();
-    public static final Font FONT = pixelFont.getFont();
     // constructor
     public Cell(int row, int col){
         super();
@@ -33,7 +30,6 @@ public class Cell extends JTextField {
         this.col = col;
 
         super.setHorizontalAlignment(JTextField.CENTER);
-        super.setFont(FONT);
     }
 
     public void newGrid(int answer, boolean isFilled){

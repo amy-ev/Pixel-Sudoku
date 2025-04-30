@@ -1,4 +1,4 @@
-package sudoku;
+package main.sudoku;
 
 public class GridConstants {
     public static final int GRID_SIZE = 9;

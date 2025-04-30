@@ -1,18 +1,20 @@
-package sudoku;
+package main.sudoku;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Objects;
 
 public class End extends JFrame {
 
+    private static final PixelFont pixelFont = new PixelFont();
+
+    public static final Font FONT = pixelFont.getFont();
+
     public End() {
-        super.setBackground(Color.BLACK);
+
         JPanel panel = new JPanel();
         JLabel label = new JLabel("would you like to play again?");
-
 
         TimerLabel mainTimerLabel = Main.timerLabel;
         JLabel timerLabel = new JLabel(mainTimerLabel.stopTimer());
@@ -36,6 +38,9 @@ public class End extends JFrame {
         panel.add(timerLabel);
 
         super.add(panel);
+
+        PixelFont.setPixelFont(this,pixelFont.getFont());
+
         super.setVisible(true);
         super.pack();
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -1,4 +1,4 @@
-package sudoku;
+package main.sudoku;
 
 public enum CellState {
     FILLED,

@@ -1,4 +1,4 @@
-package sudoku;
+package main.sudoku;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,7 +10,6 @@ public class TimerLabel extends JLabel {
 
     public TimerLabel() {
         super.setText("00:00");
-
 
         timer = new Timer(1000, new ActionListener() {
             @Override
