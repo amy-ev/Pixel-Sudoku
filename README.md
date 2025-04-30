@@ -1,3 +1,3 @@
 ## Pixel Sudoku
-Simple Sudoku Java project.
-- /sudoku_jar/sudoku.jar -> open raw -> save -> double click to run
+Simple Sudoku Java project with level difficulty and timer
+- /sudoku_jar/sudoku.jar -> view raw -> save -> double click to run
