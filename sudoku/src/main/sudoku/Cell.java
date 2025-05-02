@@ -5,6 +5,7 @@ import java.awt.*;
 
 public class Cell extends JTextField {
     int row,col;
+    int c_row, c_col;
     int answer;
     CellState state;
 
@@ -28,6 +29,8 @@ public class Cell extends JTextField {
         super();
         this.row = row;
         this.col = col;
+        c_row = row +=1;
+        c_col = col +=1;
 
         super.setHorizontalAlignment(JTextField.CENTER);
     }
@@ -40,6 +43,24 @@ public class Cell extends JTextField {
     }
 
     public void paint(){
+        //setBorder(BorderFactory.createLineBorder(Color.black));
+        System.out.println(row);
+//        setBorder(BorderFactory.createMatteBorder(1,1,0,0,Color.BLACK));
+        if (c_row % 3 == 0){
+            setBorder(BorderFactory.createMatteBorder(0,0,2,1,Color.BLACK));
+        } else if (c_col % 3 ==0) {
+            setBorder(BorderFactory.createMatteBorder(0,0,1,2,Color.BLACK));
+        } else{
+            setBorder(BorderFactory.createMatteBorder(0,0,1,1,Color.BLACK));
+        }
+
+        if (c_row % 3 == 0 && c_col % 3 == 0){
+            setBorder(BorderFactory.createMatteBorder(0,0,2,2,Color.BLACK));
+        }
+
+
+
+
         if (state == CellState.EMPTY){
             super.setText("");
             super.setEditable(true);
