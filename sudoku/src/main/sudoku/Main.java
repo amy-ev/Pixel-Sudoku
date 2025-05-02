@@ -35,7 +35,6 @@ public class Main extends JFrame {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 Main.super.add(grid,BorderLayout.CENTER);
                 grid.newGrid((Difficulty) difficulty.getSelectedItem());
 

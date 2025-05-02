@@ -53,7 +53,6 @@ public class SudokuGrid extends JPanel {
             Cell eCell = (Cell) e.getSource();
             try {
                 int answer = Integer.parseInt(eCell.getText());
-                System.out.println(answer); // debug
 
                 if (answer == sudoku.finishedBoard[eCell.row][eCell.col]){
                     eCell.state = CellState.CORRECT;

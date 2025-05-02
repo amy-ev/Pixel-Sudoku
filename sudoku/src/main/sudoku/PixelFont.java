@@ -12,7 +12,7 @@ public class PixelFont {
         try {
             InputStream input = this.getClass().getClassLoader().getResourceAsStream("number.ttf");
             assert input != null;
-            FONT = Font.createFont(Font.TRUETYPE_FONT, input).deriveFont(20.0f);
+            FONT = Font.createFont(Font.TRUETYPE_FONT, input).deriveFont((float) GridConstants.CELL_SIZE/2);
             GraphicsEnvironment GE = GraphicsEnvironment.getLocalGraphicsEnvironment();
             GE.registerFont(FONT);
 

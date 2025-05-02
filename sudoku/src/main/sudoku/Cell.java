@@ -43,23 +43,32 @@ public class Cell extends JTextField {
     }
 
     public void paint(){
-        //setBorder(BorderFactory.createLineBorder(Color.black));
-        System.out.println(row);
-//        setBorder(BorderFactory.createMatteBorder(1,1,0,0,Color.BLACK));
         if (c_row % 3 == 0){
             setBorder(BorderFactory.createMatteBorder(0,0,2,1,Color.BLACK));
-        } else if (c_col % 3 ==0) {
+            if (c_col == 1){
+                setBorder(BorderFactory.createMatteBorder(0,2,2,1,Color.BLACK));
+            }
+        } else if (c_col % 3 == 0)  {
             setBorder(BorderFactory.createMatteBorder(0,0,1,2,Color.BLACK));
+            if (c_row == 1){
+                setBorder(BorderFactory.createMatteBorder(2,0,1,2,Color.BLACK));
+            }
+        } else if (c_col == 1) {
+            setBorder(BorderFactory.createMatteBorder(0, 2, 1, 1, Color.BLACK));
+            // for the top left-hand cell
+            if (c_row == 1){
+                setBorder(BorderFactory.createMatteBorder(2,2,1,1,Color.BLACK));
+            }
+        } else if (c_row == 1) {
+            setBorder(BorderFactory.createMatteBorder(2, 0, 1, 1, Color.BLACK));
+
         } else{
             setBorder(BorderFactory.createMatteBorder(0,0,1,1,Color.BLACK));
         }
-
+        // for each 3x3 corner
         if (c_row % 3 == 0 && c_col % 3 == 0){
             setBorder(BorderFactory.createMatteBorder(0,0,2,2,Color.BLACK));
         }
-
-
-
 
         if (state == CellState.EMPTY){
             super.setText("");
